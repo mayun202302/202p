@@ -1,0 +1,12 @@
+include LICENSE
+include README.md
+include requirements.txt
+
+recursive-include trx_energy_rental/static *
+recursive-include trx_energy_rental/templates *
+recursive-include trx_energy_rental *.py
+
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude __pycache__
+global-exclude .git* 

@@ -1,0 +1,117 @@
+/* 全局样式 */
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* 导航栏自定义 */
+.navbar-brand {
+    font-weight: bold;
+}
+
+/* 页脚样式 */
+.footer {
+    padding: 40px 0;
+    margin-top: 80px;
+}
+
+/* 卡片增强 */
+.card {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-header {
+    font-weight: bold;
+}
+
+/* 表单样式 */
+.form-control:focus {
+    border-color: #17a2b8;
+    box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.25);
+}
+
+/* 按钮自定义 */
+.btn-warning {
+    color: #fff;
+    background-color: #ff9800;
+    border-color: #ff9800;
+}
+
+.btn-warning:hover {
+    color: #fff;
+    background-color: #e68600;
+    border-color: #d97f00;
+}
+
+/* 能量租赁特有样式 */
+.energy-icon {
+    color: #ff9800;
+    margin-right: 5px;
+}
+
+.address-box {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: monospace;
+    word-break: break-all;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 15px;
+    }
+}
+
+/* 动画效果 */
+.btn {
+    transition: all 0.3s ease;
+}
+
+/* 租赁状态标签 */
+.badge {
+    padding: 6px 10px;
+}
+
+/* 租赁过程图标高亮 */
+.process-icon {
+    color: #17a2b8;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* 交易哈希截断样式 */
+.tx-hash {
+    font-family: monospace;
+    color: #6c757d;
+}
+
+/* 闪烁提醒动画 */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 152, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 152, 0, 0);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* 倒计时样式 */
+.countdown {
+    font-size: 24px;
+    font-weight: bold;
+    color: #dc3545;
+} 

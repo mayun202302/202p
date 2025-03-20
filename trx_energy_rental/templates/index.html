@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}TRX能量租赁系统 - 首页{% endblock %}
+
+{% block content %}
+<!-- 主要内容 -->
+<div class="row">
+    <div class="col-lg-8">
+        <!-- 欢迎信息 -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title"><i class="fas fa-bolt text-warning"></i> 欢迎使用TRX能量租赁系统</h2>
+                <p class="card-text">
+                    我们提供快速、便捷的TRON网络能量租赁服务，让您以低成本进行TRON链上交易。
+                </p>
+                <div class="row text-center">
+                    <div class="col-md-4 mb-3">
+                        <div class="p-3 bg-light rounded">
+                            <h3 class="h5"><i class="fas fa-tachometer-alt text-primary"></i> 高效</h3>
+                            <p class="mb-0">秒级租赁，即租即用</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="p-3 bg-light rounded">
+                            <h3 class="h5"><i class="fas fa-shield-alt text-success"></i> 安全</h3>
+                            <p class="mb-0">代理模式，资产安全</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="p-3 bg-light rounded">
+                            <h3 class="h5"><i class="fas fa-coins text-warning"></i> 经济</h3>
+                            <p class="mb-0">低成本，按需租赁</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 使用说明 -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h3 class="h5 mb-0"><i class="fas fa-info-circle"></i> 使用说明</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <div class="bg-primary text-white rounded-circle p-3" style="width: 50px; height: 50px; text-align: center;">
+                                    <span class="h5">1</span>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h6">输入地址</h4>
+                                <p class="small">输入您需要租赁能量的TRON地址</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <div class="bg-primary text-white rounded-circle p-3" style="width: 50px; height: 50px; text-align: center;">
+                                    <span class="h5">2</span>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h6">支付费用</h4>
+                                <p class="small">支付 {{ rental_price }} TRX 至指定地址</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <div class="bg-primary text-white rounded-circle p-3" style="width: 50px; height: 50px; text-align: center;">
+                                    <span class="h5">3</span>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h6">获得能量</h4>
+                                <p class="small">系统自动为您代理 {{ rental_energy }} 能量</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <div class="bg-primary text-white rounded-circle p-3" style="width: 50px; height: 50px; text-align: center;">
+                                    <span class="h5">4</span>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h6">使用能量</h4>
+                                <p class="small">使用租赁的能量进行交易，{{ rental_time }} 分钟后自动回收</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <!-- 租赁表单 -->
+        <div class="card mb-4">
+            <div class="card-header bg-warning text-dark">
+                <h3 class="h5 mb-0"><i class="fas fa-bolt"></i> 租赁能量</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('main.rent_energy') }}">
+                    {{ rent_form.hidden_tag() }}
+                    <div class="mb-3">
+                        <label for="tron_address" class="form-label">TRON地址</label>
+                        {{ rent_form.tron_address(class="form-control", placeholder="输入需要租赁能量的TRON地址") }}
+                        <div class="form-text">例如: TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <span class="fw-bold">租赁价格:</span> 
+                                <span class="text-danger">{{ rental_price }} TRX</span>
+                            </div>
+                            <div>
+                                <span class="fw-bold">能量数量:</span> 
+                                <span class="text-success">{{ rental_energy }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        {{ rent_form.submit(class="btn btn-warning") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 支付信息 -->
+        <div class="card mb-4">
+            <div class="card-header bg-danger text-white">
+                <h3 class="h5 mb-0"><i class="fas fa-info-circle"></i> 重要信息</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>支付地址:</strong></p>
+                <div class="alert alert-light">
+                    <code>{{ monitor_address }}</code>
+                    <button class="btn btn-sm btn-outline-secondary ms-2" onclick="copyToClipboard('{{ monitor_address }}')">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <p class="mb-1"><strong>注意事项:</strong></p>
+                <ul class="ps-3 mb-0">
+                    <li>能量租赁时长为 {{ rental_time }} 分钟</li>
+                    <li>进行TRC20转账后，系统将立即回收能量</li>
+                    <li>如果您已有超过60,000能量，将无法租赁</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        alert('地址已复制到剪贴板');
+    }).catch(function(err) {
+        console.error('复制失败:', err);
+    });
+}
+</script>
+{% endblock %} 
